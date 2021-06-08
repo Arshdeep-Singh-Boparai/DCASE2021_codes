@@ -285,3 +285,51 @@ print(logloss_overall)
 model1.summary()
 
 
+#%% Quantization
+
+tf.keras.backend.set_floatx('float16')
+ws = model1.get_weights()
+wsp = [w.astype(tf.keras.backend.floatx()) for w in ws]
+
+#build new quantized model
+
+model_quant.add(Conv2D(len(L2), kernel_size=(7, 7),padding='same'))
+
+model_quant.add(BatchNormalization()) #layer2
+convout2= Activation('relu')
+model_quant.add(convout2) #laye
+
+model_quant.add(MaxPooling2D(pool_size=(5, 5)))
+
+model1.add(Dropout(0.30))
+
+
+
+model_quant.add(Conv2D(len(L3), kernel_size=(7, 7),padding='same'))
+
+model_quant.add(BatchNormalization()) #layer2
+convout2= Activation('relu')
+model_quant.add(convout2) #laye
+
+model1.add(MaxPooling2D(pool_size=(4, 100)))
+
+model_quant.add(Dropout(0.30))
+
+
+model_quant.add(Flatten())
+
+model_quant.add(Dense(100,activation='relu'))
+model_quant.add(Dropout(0.30))
+
+model_quant.add(Dense(10, activation='softmax'))
+
+
+model_quant.compile(loss=keras.losses.categorical_crossentropy,
+              optimizer=keras.optimizers.Adam(),
+              metrics=['accuracy'])
+
+
+model_quant.set_weights(wsp)
+
+
+
