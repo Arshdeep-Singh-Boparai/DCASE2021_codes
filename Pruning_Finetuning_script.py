@@ -331,5 +331,5 @@ model_quant.compile(loss=keras.losses.categorical_crossentropy,
 
 model_quant.set_weights(wsp)
 
-
+model_quant.save('~/Singh_IITMandi_task1a_X_quant.h5')
 
