@@ -1,5 +1,5 @@
 # DCASE2021_codes
-The trained models submitted for DCASE-2021 Task 1A!
+1..................The trained models submitted for DCASE-2021 Task 1A!
 Detailed description is given below:
 
 Singh_IITMandi_task1a_1
@@ -93,4 +93,7 @@ Singh_IITMandi_task1a_4
   dense_2                     | 1010        1010      | 1.973 KB                      1.973 KB                     
   --------------------------- | ---------   --------- | ---------------------------   ---------------------------  
   Total                       | 36578       36578     | 73,156 bytes (71.44 KB)       73,156 bytes (71.44 KB)      
+  
+  
+  2..............Codes for pruning, finetning, quantization and testing.
 
